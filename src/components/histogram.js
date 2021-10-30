@@ -11,16 +11,26 @@ export default function Histogram(props) {
         return Math.max(...histoMax)
     }
 
-    // const histogram = rawData.map(function () {
-    //     return (
-    //         <div>hello</div>
-    //     )
-    // })
+    // take max number, that is going to be 100%
+    // other numbers should have a % height equal to rawData.distance / max number
+
+    function histogram(stuff) {
+        return stuff.rawData.map(function (index) {
+            const heightThing = Math.floor(index.distance / histogramVarHeight(stuff.rawData) * 100)
+            console.log(heightThing)
+
+            return (
+                <div style={{backgroundColor: "blue", height: `${heightThing}%`}}>
+                    stuff
+                </div>
+            )
+        })
+    }
     
     return (
-        <div>
-            {/* {histogram} */}
-            {histogramVarHeight(props.rawData)}
+        <div style={{display: "flex", alignItems: "center", justifyContent:"space-between", height: "200px", width: "300px"}} className="histogramContainer">
+            {histogram(props)}
+            {/* {histogramVarHeight(props.rawData)} */}
         </div>
     )
 } 
