@@ -17,10 +17,9 @@ export default function Histogram(props) {
     function histogram(stuff) {
         return stuff.rawData.map(function (index) {
             const heightThing = Math.floor(index.distance / histogramVarHeight(stuff.rawData) * 100)
-            console.log(heightThing)
 
             return (
-                <div style={{backgroundColor: "blue", height: `${heightThing}%`}}>
+                <div style={{backgroundColor: "blue", height: `${heightThing}%`, color: "white"}}>
                     stuff
                 </div>
             )
@@ -28,7 +27,7 @@ export default function Histogram(props) {
     }
     
     return (
-        <div style={{display: "flex", alignItems: "center", justifyContent:"space-between", height: "200px", width: "300px"}} className="histogramContainer">
+        <div style={{display: "flex", alignItems: "flex-end", justifyContent:"space-between", height: "200px", width: "300px"}} className="histogramContainer">
             {histogram(props)}
             {/* {histogramVarHeight(props.rawData)} */}
         </div>
