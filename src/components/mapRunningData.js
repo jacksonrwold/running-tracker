@@ -17,7 +17,6 @@ export default function mapRunningData() {
 
     return (
         <div>
-            {console.log(thingy)}
             {thingy}
         </div>
     )
