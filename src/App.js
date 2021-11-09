@@ -3,6 +3,7 @@ import Histogram from "./components/histogram";
 import "./styles/main.css"
 import "./styles/histogram.css"
 import CreateRunForm from "./components/createRun";
+import MapRunningData from "./components/mapRunningData";
 
 export default function App() {
   const [data, setData] = useState([{}])
@@ -29,6 +30,7 @@ export default function App() {
         <Histogram rawData={data} setCurrentRun={setCurrentRun} />
       </div>
       {/* <button onClick={() => {console.log(currentRun)}}>console.log currentRun</button> */}
+      {currentRun !== 0 ? <MapRunningData currentRun={currentRun}/> : null}
     </div>
   );
 }
