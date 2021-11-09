@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Histogram from "./components/histogram";
 import "./styles/main.css"
 import "./styles/histogram.css"
+import CreateRunForm from "./components/createRun";
 
 export default function App() {
   const [data, setData] = useState([
@@ -14,13 +15,14 @@ export default function App() {
         setData(responseData)
       })
     )
-  }, [data])
+  }, [])
 
   return (
     <div className="app">
       <div className="navbarContainer">
         <div className="navbar">
           temp navbar
+          <CreateRunForm />
         </div>
 
         <Histogram rawData={data}/>
