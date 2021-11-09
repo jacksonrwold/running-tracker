@@ -10,14 +10,18 @@ export default function MapRunningData(props) {
     useEffect(() => {
         fetch(`http://localhost:5000/run/${props.currentRun}`).then(response =>
           response.json().then(responseData => {
-            console.log(responseData)
+            setTime(responseData[0].time)
+            setDistance(responseData[0].distance)
+            setCalories(responseData[0].calories)
           })
         )
       }, [props.currentRun])
 
     return (
         <div>
-            hi
+            time: {time}
+            distance: {distance}
+            calories: {calories}
         </div>
     )
 }
