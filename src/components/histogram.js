@@ -19,9 +19,11 @@ export default function Histogram(props) {
         return data.map(function (index) {
             const heightThing = Math.floor(index.distance / histogramVarHeight(data) * 100)
             return (
-                <div style={{height: `${heightThing}%`, backgroundColor: "blue", color: "white"}} className="histogram">
+                <button onClick={() => {
+                    props.setCurrentRun(index.id)
+                }} style={{height: `${heightThing}%`, backgroundColor: "blue", color: "white"}} className="histogram">
                     {index.distance}
-                </div>
+                </button>
             )
         })
     }

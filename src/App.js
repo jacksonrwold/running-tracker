@@ -5,14 +5,14 @@ import "./styles/histogram.css"
 import CreateRunForm from "./components/createRun";
 
 export default function App() {
-  const [data, setData] = useState([
-    {id: 1, distance: 10}
-  ])
+  const [data, setData] = useState([{}])
+  const [currentRun, setCurrentRun] = useState(0)
   
   useEffect(() => {
     fetch("http://localhost:5000/runs").then(response =>
       response.json().then(responseData => {
         setData(responseData)
+        console.log(responseData)
       })
     )
   }, [])
@@ -25,8 +25,10 @@ export default function App() {
           <CreateRunForm />
         </div>
 
-        <Histogram rawData={data}/>
+        {/* {currentRun == 0 ? <Histogram rawData={data} setCurrentRun={setCurrentRun} />: <Histogram rawData={data}/>} */}
+        <Histogram rawData={data} setCurrentRun={setCurrentRun} />
       </div>
+      {/* <button onClick={() => {console.log(currentRun)}}>console.log currentRun</button> */}
     </div>
   );
 }
