@@ -17,11 +17,15 @@ export default function MapRunningData(props) {
             setCalories(responseData[0].calories)
           })
         )
+
+        
       }, [props.currentRun])
+
+      const initialValues = {time, distance, calories}
 
     return (
         <div>
-            {isEditing ? <EditRun currentRun={props.currentRun} initialTime={time} initialDistance={distance} initialCalories={calories}/> : 
+            {isEditing ? <EditRun triggerReload={[props.reload[0], props.reload[1]]} currentRun={props.currentRun} initialValues={initialValues}/> : 
             <div>
               time: {time}
               distance: {distance}
@@ -31,7 +35,6 @@ export default function MapRunningData(props) {
 
             <button className="edit-button" onClick={() => {
               setIsEditing(!isEditing)
-              console.log(isEditing)
             }}>edit this run</button>
         </div>
     )

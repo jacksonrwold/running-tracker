@@ -6,6 +6,7 @@ import CreateRunForm from "./components/createRun";
 import MapRunningData from "./components/mapRunningData";
 
 export default function App() {
+  const [reload, triggerReload] = useState(false)
   const [data, setData] = useState([{}])
   const [currentRun, setCurrentRun] = useState(0)
   
@@ -13,10 +14,9 @@ export default function App() {
     fetch("http://localhost:5000/runs").then(response =>
       response.json().then(responseData => {
         setData(responseData)
-        console.log(responseData)
       })
     )
-  }, [])
+  }, [reload])
 
   return (
     <div className="app">
@@ -26,11 +26,9 @@ export default function App() {
           <CreateRunForm />
         </div>
 
-        {/* {currentRun == 0 ? <Histogram rawData={data} setCurrentRun={setCurrentRun} />: <Histogram rawData={data}/>} */}
         <Histogram rawData={data} setCurrentRun={setCurrentRun} />
       </div>
-      {/* <button onClick={() => {console.log(currentRun)}}>console.log currentRun</button> */}
-      {currentRun !== 0 ? <MapRunningData currentRun={currentRun}/> : null}
+      {currentRun !== 0 ? <MapRunningData reload={[reload, triggerReload]} currentRun={currentRun}/> : null}
     </div>
   );
 }

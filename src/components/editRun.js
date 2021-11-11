@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
 export default function CreateRunForm(props) {
-    const [time, setTime] = useState(props.initialTime)
-    const [distance, setDistance] = useState(props.initialDistance)
-    const [calories, setCalories] = useState(props.initialCalories)
+    const [time, setTime] = useState(props.initialValues.time)
+    const [distance, setDistance] = useState(props.initialValues.distance)
+    const [calories, setCalories] = useState(props.initialValues.calories)
 
     return (
         <div>
@@ -37,7 +37,8 @@ export default function CreateRunForm(props) {
                 })
 
                 if (response.ok) {
-                    console.log("response worked")
+                    console.log(props.triggerReload)
+                    props.triggerReload[1](!props.triggerReload[0])
                 }
             }}>Submit</button>
         </div>
