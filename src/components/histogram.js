@@ -21,7 +21,7 @@ export default function Histogram(props) {
             return (
                 <button onClick={() => {
                     props.setCurrentRun(index.id)
-                }} style={{height: `${heightThing}%`, backgroundColor: "blue", color: "white"}} className="histogram">
+                }} key={index.id} style={{height: `${heightThing}%`, backgroundColor: "blue", color: "white"}} className="histogram">
                     {index.distance}
                 </button>
             )

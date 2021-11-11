@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
+import EditRun from "./editRun"
 
 export default function MapRunningData(props) {
     // const currentRun = props['currentRun']
     // const [currentRun, setCurrentRun] = useState("initial value")
+    const [isEditing, setIsEditing] = useState(false)
     const [time, setTime] = useState(0)
     const [distance, setDistance] = useState(0)
     const [calories, setCalories] = useState(0)
@@ -19,9 +21,18 @@ export default function MapRunningData(props) {
 
     return (
         <div>
-            time: {time}
-            distance: {distance}
-            calories: {calories}
+            {isEditing ? <EditRun currentRun={props.currentRun} initialTime={time} initialDistance={distance} initialCalories={calories}/> : 
+            <div>
+              time: {time}
+              distance: {distance}
+              calories: {calories}
+            </div>
+            }
+
+            <button className="edit-button" onClick={() => {
+              setIsEditing(!isEditing)
+              console.log(isEditing)
+            }}>edit this run</button>
         </div>
     )
 }
