@@ -37,7 +37,6 @@ export default function CreateRunForm(props) {
                 })
 
                 if (response.ok) {
-                    console.log(props.triggerReload)
                     props.triggerReload[1](!props.triggerReload[0])
                 }
             }}>Submit</button>
