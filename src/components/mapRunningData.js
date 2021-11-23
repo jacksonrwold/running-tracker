@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import EditRun from "./editRun"
+import DeleteRun from "./deleteRun"
 
 export default function MapRunningData(props) {
     // const currentRun = props['currentRun']
@@ -36,6 +37,8 @@ export default function MapRunningData(props) {
             <button className="edit-button" onClick={() => {
               setIsEditing(!isEditing)
             }}>edit this run</button>
+
+            <DeleteRun currentRun={props.currentRun}/>
         </div>
     )
 }
