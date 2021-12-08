@@ -26,7 +26,8 @@ export default function App() {
           <CreateRunForm />
         </div>
 
-        <Histogram rawData={data} setCurrentRun={setCurrentRun} />
+        {console.log(data)}
+        <Histogram rawData={data} dataKey="distance" setCurrentRun={setCurrentRun} />
       </div>
       {currentRun !== 0 ? <MapRunningData reload={[reload, triggerReload]} currentRun={currentRun}/> : null}
     </div>
